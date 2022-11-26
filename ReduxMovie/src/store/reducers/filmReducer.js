@@ -1,24 +1,19 @@
-import { ActionTypes } from "../actions/actions-types"
+import { ActionTypes } from "../actions/actions-types";
 const nameInitialState = {
-    movies: [],
-    moviesList:[],
-    moviesSlide:[],  
-}
+  movies: [],
+  moviesList: [],
+  moviesSlide: [],
+  postMovies: [],
+};
 const filmReducer = (state = nameInitialState, action) => {
-    switch (action.type) {
-        case ActionTypes.SEARCH_MOVIE:
-            return {
-                ...state,
-                movies: action.payload
-            }
-        case ActionTypes.SLIDER:
-            return {
-                ...state,
-                moviesSlide: action.payload
-
-            }
-        default:
-            return state
-    }
-}
-export default filmReducer
+  switch (action.type) {
+    case ActionTypes.SLIDER:
+      return {
+        ...state,
+        moviesSlide: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+export default filmReducer;
