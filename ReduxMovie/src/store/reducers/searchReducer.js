@@ -12,13 +12,13 @@ export const searchReducer = (state = nameInitialState, action) => {
         movies: action.payload,
       };
     case ActionTypes.ADD_TO_LIST:
-      const movie = state.movies.find((item) => item.imdbID === payload);
+      const movie = state.movies.find((item) => item.imdbID === action.payload);
       const moviesList = [...state.moviesList, { ...movie }];
       return { ...state, moviesList };
 
     case ActionTypes.REMOVE_FROM_LIST:
       const newMoviesList = state.moviesList.filter(
-        (item) => item.imdbID !== payload
+        (item) => item.imdbID !== action.payload
       );
       return { ...state, moviesList: newMoviesList };
 

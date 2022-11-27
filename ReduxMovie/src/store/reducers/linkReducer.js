@@ -6,7 +6,7 @@ const nameInitialState = {
 export const linkReducer = (state = nameInitialState, action) => {
   switch (action.type) {
     case ActionTypes.SET_LINK_ACTIVE:
-      return { ...state, linkActive: payload };
+      return { ...state, linkActive: action.payload };
     default:
       return state;
   }
