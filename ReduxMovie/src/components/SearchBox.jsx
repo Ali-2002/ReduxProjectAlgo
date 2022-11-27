@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { getMovies, searchMovies} from "../store/actions/actions";
+import { getMovies, searchMovies } from "../store/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 const SearchBox = () => {
   const [search, setSearch] = useState("");
-  const { searchMovies } = useSelector((state) => state.movies);
-  {
-    console.log(searchMovies);
-  }
+  const data = useSelector((state) => state.movies);
+  console.log(data);
   const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(getMovies(search));
   // }, [search]);
+
+  const handleSearchMovie = () => {
+    dispatch(getMovies(search));
+  };
   return (
     <>
       <div className="form-control flex flex-row flex-wrap justify-center gap-6">
@@ -27,16 +29,7 @@ const SearchBox = () => {
         </div>
         <button
           type="submit"
-          onClick={(e) => {
-            e.preventDefault()
-            getMovies(search)
-              .then((res) => dispatch(searchMovies(res)))
-              .then((res) => console.log(res))
-              .catch((err) => {
-                dispatch(searchMovies([]));
-                return err;
-              });
-          }}
+          onClick={handleSearchMovie}
           className="btn bg-teal-300 border-none text-xl text-white p-1 rounded-lg"
           disabled={!search}
         >

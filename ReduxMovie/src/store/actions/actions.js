@@ -5,15 +5,20 @@ const key = "d825d3f6";
 const apiKey = "6c485b233760419c89b5f73eded6e125";
 const film = "Batman";
 
-export const getMovies = async (name) => {
-  try {
-    const { movies } = await axios.get(
-      `http://www.omdbapi.com/?s=${name}&apikey=${key}`
-    );
-    return movies.data.Search;
-  } catch (error) {
-    alert("Movies not found", error);
-  }
+export const getMovies = (name) => {
+  return async (dispatch) => {
+    try {
+      const {data} = await axios.get(
+        `http://www.omdbapi.com/?s=${name}&apikey=${key}`
+      );
+      dispatch({
+        type: ActionTypes.SEARCH_MOVIE,
+        payload: data.Search,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 };
 
 export const slideData = () => {

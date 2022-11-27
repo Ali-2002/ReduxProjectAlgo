@@ -2,6 +2,8 @@ import { ActionTypes } from "../actions/actions-types";
 
 const nameInitialState = {
     movies: [],
+    // loading:false,
+    // error:true
 }
 export const searchReducer = (state = nameInitialState, action) => {
     switch (action.type) {
@@ -13,4 +15,4 @@ export const searchReducer = (state = nameInitialState, action) => {
         default:
             return state
     }
-}
+} 
