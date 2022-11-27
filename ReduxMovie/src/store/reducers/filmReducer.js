@@ -1,9 +1,6 @@
 import { ActionTypes } from "../actions/actions-types";
 const nameInitialState = {
-  movies: [],
-  moviesList: [],
   moviesSlide: [],
-  postMovies: [],
 };
 const filmReducer = (state = nameInitialState, action) => {
   switch (action.type) {

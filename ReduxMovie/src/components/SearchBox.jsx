@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getMovies } from "../store/actions/actions";
+import { getMovies, searchMovies} from "../store/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 const SearchBox = () => {
   const [search, setSearch] = useState("");
-  const { searchMovies } = useSelector((state) => state.searchMovies);
-  console.log(searchMovies);
+  const { searchMovies } = useSelector((state) => state.movies);
+  {
+    console.log(searchMovies);
+  }
   const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(getMovies(search));
@@ -26,8 +28,14 @@ const SearchBox = () => {
         <button
           type="submit"
           onClick={(e) => {
-            e.preventDefault();
-            dispatch(getMovies(search));
+            e.preventDefault()
+            getMovies(search)
+              .then((res) => dispatch(searchMovies(res)))
+              .then((res) => console.log(res))
+              .catch((err) => {
+                dispatch(searchMovies([]));
+                return err;
+              });
           }}
           className="btn bg-teal-300 border-none text-xl text-white p-1 rounded-lg"
           disabled={!search}
