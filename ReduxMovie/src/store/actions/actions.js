@@ -3,12 +3,12 @@ import axios from "axios";
 
 const key = "d825d3f6";
 const apiKey = "6c485b233760419c89b5f73eded6e125";
-const film = "Batman";
+const film = "Avengers";
 
 export const getMovies = (name) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.get(
+      const { data } = await axios.get(
         `http://www.omdbapi.com/?s=${name}&apikey=${key}`
       );
       dispatch({
@@ -49,6 +49,11 @@ export const addToList = (payload) => ({
 
 export const removeFromList = (payload) => ({
   type: ActionTypes.REMOVE_FROM_LIST,
+  payload,
+});
+
+export const setLinkActive = (payload) => ({
+  type: ActionTypes.SET_LINK_ACTIVE,
   payload,
 });
 

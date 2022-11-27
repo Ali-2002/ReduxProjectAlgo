@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
+import Movies from "../components/Movies";
 import SliderComponent from "../components/SliderComponent";
 
 const MainPage = () => {
@@ -11,6 +12,9 @@ const MainPage = () => {
         </div>
         <div>
           <SliderComponent />
+        </div>
+        <div>
+          <Movies />
         </div>
       </div>
     </>

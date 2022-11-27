@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { getMovies, searchMovies } from "../store/actions/actions";
+import React, { useState } from "react";
+import { getMovies } from "../store/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 const SearchBox = () => {
   const [search, setSearch] = useState("");
   const data = useSelector((state) => state.movies);
   console.log(data);
+
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getMovies(search));
-  // }, [search]);
 
   const handleSearchMovie = () => {
     dispatch(getMovies(search));
   };
+
   return (
     <>
       <div className="form-control flex flex-row flex-wrap justify-center gap-6">

@@ -12,12 +12,7 @@ function SampleNextArrow(props) {
       className={className}
       style={{
         ...style,
-        display: "flex",
-        background: "green",
-        width: 30,
-        height: 30,
-        justifyContent: "center",
-        alignItems: "center",
+        display: "none",
       }}
       onClick={onClick}
     />
@@ -31,12 +26,7 @@ function SamplePrevArrow(props) {
       className={className}
       style={{
         ...style,
-        display: "flex",
-        background: "green",
-        width: 30,
-        height: 30,
-        justifyContent: "center",
-        alignItems: "center",
+        display: "none",
       }}
       onClick={onClick}
     />
@@ -60,9 +50,9 @@ const SliderComponent = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    //autoplay: true,
+    autoplay: true,
     speed: 2000,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     cssEase: "linear",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -70,29 +60,35 @@ const SliderComponent = () => {
 
   return (
     <>
-      <Slider {...settings} className="w-[90%] mx-auto p-4 box-border ">
+      <Slider {...settings} className="w-[90%] mx-auto p-4 box-border">
         {moviesSlide.length > 0
           ? moviesSlide.map((item) => {
               return (
                 <div key={item.id}>
-                  <div className="flex gap-1 box-border items-center">
-                    <div className="">
-                      <img
-                        src={`https://image.tmdb.org/t/p/original//${item.poster_path}`}
-                        alt={item.Title}
-                        className=""
-                      />
-                    </div>
-                    <div className="flex flex-col gap-5">
-                      <h1 className="text-6xl font-bold">{item.title}</h1>
-                      <h2 className="text-4xl font-semibold">About Film</h2>
-                      <h3 className="text-3xl font-medium font-mono">
+                  <div className="flex gap-1 box-border items-center bg-slate-900  rounded-xl p-5">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500//${item.poster_path}`}
+                      alt={item.Title}
+                      className="rounded-lg shadow-lg"
+                    />
+
+                    <div className="flex flex-col gap-5 ml-5 bg-slate-300 p-5 rounded-xl shadow-lg">
+                      <div className="flex justify-between">
+                        <h1 className="text-5xl font-bold text-white">{item.title}</h1>
+                        <div className="flex items-center justify-center text-3xl w-60 font-semibold bg-orange-400 rounded-xl p-4 text-white">
+                          IMDB: {item.vote_average}
+                        </div>
+                      </div>
+                      <h2 className="text-4xl font-semibold text-yellow-50">
+                        About Film
+                      </h2>
+                      <h3 className="text-3xl font-medium font-mono text-white">
                         Genres: {item.genres}
                       </h3>
-                      <h3 className="text-3xl font-medium font-mono">
+                      <h3 className="text-3xl font-medium font-mono text-white">
                         Release Date: {item.release_date}
                       </h3>
-                      <h3 className="text-3xl font-medium font-serif">
+                      <h3 className="text-3xl font-medium font-serif text-white">
                         Overview: {item.overview}
                       </h3>
                     </div>

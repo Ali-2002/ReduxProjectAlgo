@@ -1,18 +1,21 @@
 import { ActionTypes } from "../actions/actions-types";
 
 const nameInitialState = {
-    movies: [],
-    // loading:false,
-    // error:true
-}
+  movies: [],
+  moviesList: [],
+};
 export const searchReducer = (state = nameInitialState, action) => {
-    switch (action.type) {
-        case ActionTypes.SEARCH_MOVIE:
+  switch (action.type) {
+    case ActionTypes.SEARCH_MOVIE:
       return {
         ...state,
         movies: action.payload,
       };
-        default:
-            return state
-    }
-} 
+    case ActionTypes.ADD_TO_LIST:
+      const movie = state.movies.find((item) => item.imdbID === payload);
+      const moviesList = [...state.moviesList, { ...movie }];
+      return { ...state, moviesList };
+    default:
+      return state;
+  }
+};
