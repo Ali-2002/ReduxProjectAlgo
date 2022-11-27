@@ -9,15 +9,16 @@ const Movies = () => {
       <div>
         {movies.length > 0
           ? movies.map((movie) => {
-              <div key={movie.imdbID}>
-                <MovieItem
-                  movie={movie}
-                  disabled={moviesList.find(
-                    (item) => item.imdbID === movie.imdbID
-                  )}
-                />
-              </div>;
-              {console.log(movie)}
+              <MovieItem
+                key={movie.imdbID}
+                movie={movie}
+                disabled={moviesList.find(
+                  (item) => item.imdbID === movie.imdbID
+                )}
+              />;
+              {
+                console.log(movie);
+              }
             })
           : null}
       </div>

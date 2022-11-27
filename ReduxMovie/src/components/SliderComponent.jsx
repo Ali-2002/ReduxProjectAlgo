@@ -72,9 +72,11 @@ const SliderComponent = () => {
                       className="rounded-lg shadow-lg"
                     />
 
-                    <div className="flex flex-col gap-5 ml-5 bg-slate-300 p-5 rounded-xl shadow-lg">
+                    <div className="flex flex-col gap-5 ml-5 bg-slate-700 p-5 rounded-xl shadow-lg">
                       <div className="flex justify-between">
-                        <h1 className="text-5xl font-bold text-white">{item.title}</h1>
+                        <h1 className="text-5xl font-bold text-white">
+                          {item.title}
+                        </h1>
                         <div className="flex items-center justify-center text-3xl w-60 font-semibold bg-orange-400 rounded-xl p-4 text-white">
                           IMDB: {item.vote_average}
                         </div>
