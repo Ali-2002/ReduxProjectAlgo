@@ -1,9 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToList } from "../store/actions/actions";
 const MovieItem = ({ Title, Year, Poster, imdbID, disabled }) => {
   const dispatch = useDispatch();
-  const linkActive = useSelector((state) => state.reducer.linkActive);
   return (
     <>
       <div className="flex flex-col justify-center item-center text-center p-3 bg-[#121514] shadow-lg backdrop-4">
@@ -13,7 +12,7 @@ const MovieItem = ({ Title, Year, Poster, imdbID, disabled }) => {
           type="button"
           className="text-white bg-teal-400  ease-in-out text-3xl px-5 py-3 rounded-md "
         >
-          {!disabled ? "Add" : "Done"}
+          disabled={disabled ? "Add" : "Done"}
         </button>
         <img className="w-64 flex justify-center" src={Poster} alt={Title} />
         <div className="w-72 text-center">

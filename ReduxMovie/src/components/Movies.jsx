@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import MovieItem from "./MovieItem";
 const Movies = () => {
-  const { movies } = useSelector((state) => state.movies);
-  const { moviesList } = useSelector((state) => state.moviesList);
+  const { movies, moviesList } = useSelector((state) => state.movies);
+  console.log(movies);
   return (
     <>
       <div>
@@ -17,6 +17,7 @@ const Movies = () => {
                   )}
                 />
               </div>;
+              {console.log(movie)}
             })
           : null}
       </div>

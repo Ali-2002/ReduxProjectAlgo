@@ -52,11 +52,3 @@ export const removeFromList = (payload) => ({
   payload,
 });
 
-export const setLinkActive = (payload) => ({
-  type: ActionTypes.SET_LINK_ACTIVE,
-  payload,
-});
-
-export const addPostMovie = (payload) => {
-  type: ActionTypes.ADD_POST_MOVIES, payload;
-};
