@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import { setLinkActive } from "../actions/actions";
+import { linkReducer } from "./linkReducer";
 import filmReducer from "./filmReducer";
 import { searchReducer } from "./searchReducer";
 const rootReducer = combineReducers({
   slider: filmReducer,
   movies: searchReducer,
-  linkActive: setLinkActive,
+  linkActive: linkReducer,
 });
 
 export default rootReducer;

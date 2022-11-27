@@ -1,9 +1,11 @@
+import { ActionTypes } from "../actions/actions-types";
+
 const nameInitialState = {
   linkActive: false,
 };
-export const name = (state = nameInitialState, action) => {
+export const linkReducer = (state = nameInitialState, action) => {
   switch (action.type) {
-    case SET_LINKACTIVE:
+    case ActionTypes.SET_LINK_ACTIVE:
       return { ...state, linkActive: payload };
     default:
       return state;

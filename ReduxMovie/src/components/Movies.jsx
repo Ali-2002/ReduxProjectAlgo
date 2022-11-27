@@ -18,9 +18,6 @@ const Movies = () => {
                   )}
                 />
               );
-              {
-                console.log(movie);
-              }
             })
           : null}
       </div>
