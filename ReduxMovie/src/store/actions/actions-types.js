@@ -3,4 +3,5 @@ export const ActionTypes = {
   ADD_TO_LIST: "ADD_TO_LIST",
   REMOVE_FROM_LIST: "REMOVE_FROM_LIST",
   SLIDER: "SLIDER",
+  SET_LINK_ACTIVE: "SET_LINK_ACTIVE",
 };

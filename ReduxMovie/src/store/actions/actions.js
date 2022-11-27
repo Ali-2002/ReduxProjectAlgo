@@ -3,7 +3,7 @@ import axios from "axios";
 
 const key = "d825d3f6";
 const apiKey = "6c485b233760419c89b5f73eded6e125";
-const film = "Avengers";
+const film = "Star Wars";
 
 export const getMovies = (name) => {
   return async (dispatch) => {
@@ -16,7 +16,7 @@ export const getMovies = (name) => {
         payload: data.Search,
       });
     } catch (error) {
-      console.log(error.message);
+      alert("Movies not found",error.message);
     }
   };
 };
@@ -49,6 +49,11 @@ export const addToList = (payload) => ({
 
 export const removeFromList = (payload) => ({
   type: ActionTypes.REMOVE_FROM_LIST,
+  payload,
+});
+
+export const setLinkActive = (payload) => ({
+  type: ActionTypes.SET_LINK_ACTIVE,
   payload,
 });
 

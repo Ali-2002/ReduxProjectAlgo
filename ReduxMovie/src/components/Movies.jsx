@@ -6,16 +6,18 @@ const Movies = () => {
   console.log(movies);
   return (
     <>
-      <div>
+      <div className="flex gap-3 mt-10 flex-wrap justify-center">
         {movies.length > 0
           ? movies.map((movie) => {
-              <MovieItem
-                key={movie.imdbID}
-                movie={movie}
-                disabled={moviesList.find(
-                  (item) => item.imdbID === movie.imdbID
-                )}
-              />;
+              return (
+                <MovieItem
+                  key={movie.imdbID}
+                  movie={movie}
+                  disabled={moviesList.find(
+                    (item) => item.imdbID === movie.imdbID
+                  )}
+                />
+              );
               {
                 console.log(movie);
               }

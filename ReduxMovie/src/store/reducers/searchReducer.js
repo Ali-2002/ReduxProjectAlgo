@@ -15,6 +15,13 @@ export const searchReducer = (state = nameInitialState, action) => {
       const movie = state.movies.find((item) => item.imdbID === payload);
       const moviesList = [...state.moviesList, { ...movie }];
       return { ...state, moviesList };
+
+    case ActionTypes.REMOVE_FROM_LIST:
+      const newMoviesList = state.moviesList.filter(
+        (item) => item.imdbID !== payload
+      );
+      return { ...state, moviesList: newMoviesList };
+
     default:
       return state;
   }

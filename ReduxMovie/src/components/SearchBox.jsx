@@ -19,7 +19,7 @@ const SearchBox = () => {
           <label className="input w-1/4 shadow-xl">
             <input
               type="text"
-              onChange={(e) => setSearch(e.target.value.trim())}
+              onChange={(e) => setSearch(e.target.value)}
               value={search}
               placeholder="Enter film..."
               className="input input-bordered w-60 max-w-xs focus:outline-none p-2 rounded-lg"
