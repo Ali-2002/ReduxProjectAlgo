@@ -16,7 +16,7 @@ export const getMovies = (name) => {
         payload: data.Search,
       });
     } catch (error) {
-      alert("Movies not found",error.message);
+      alert("Movies not found", error.message);
     }
   };
 };
@@ -29,13 +29,31 @@ export const slideData = () => {
       );
       dispatch({
         type: ActionTypes.SLIDER,
-        payload: data.results.slice(0, 5),
+        payload: data.results,
       });
     } catch (error) {
       console.log("Error");
     }
   };
 };
+
+export const getPostMovies = (imdbID) => {
+  return function (dispatch) {
+    let postMovie = [];
+    axios
+      .get(`http://www.omdbapi.com/?i=${imdbID}&apikey=${key}`)
+      .then((res) => res.data)
+      .then((data) => {
+        postMovie = [...postMovie, data];
+        dispatch(postMovies(postMovie));
+      });
+  };
+};
+
+export const postMovies = (payload) => ({
+  type: ActionTypes.POST_MOVIES,
+  payload,
+});
 
 export const searchMovies = (payload) => ({
   type: ActionTypes.SEARCH_MOVIE,
@@ -56,4 +74,3 @@ export const setLinkActive = (payload) => ({
   type: ActionTypes.SET_LINK_ACTIVE,
   payload,
 });
-

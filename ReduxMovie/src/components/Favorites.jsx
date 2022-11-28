@@ -7,7 +7,22 @@ const Favorites = () => {
   const { moviesList } = useSelector((state) => state.movies);
   const { linkActive } = useSelector((state) => state.linkActive);
   const [listName, setListName] = useState("");
-  //const [linkList, setLinkList] = useState("#");
+  const [linkList, setLinkList] = useState("#");
+
+  const saveList = () => {
+    dispatch(setLinkActive(true));
+    axios
+      .post("https://acb-api.algoritmika.org/api/movies/list", {
+        title: listName,
+        movies: moviesList.map((item) => item.imdbID),
+      })
+      .then((res) => {
+        setLinkList(res.data.id);
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  };
 
   return (
     <>
@@ -45,6 +60,26 @@ const Favorites = () => {
               : null}
           </ul>
         ) : null}
+        <button
+          type="button"
+          className="bg-teal-500 p-3 text-center text-white rounded-lg"
+          style={{ display: linkActive ? "none" : "block" }}
+          onClick={saveList}
+          disabled={listName === "" || moviesList.length === 0}
+        >
+          {" "}
+          Save List{" "}
+        </button>
+
+        <a
+          href={`http://127.0.0.1:5173/list/${linkList}`}
+          target="_blank"
+          rel="noopener norefer"
+          className="bg-red-600 p-3 rounded-lg text-white"
+          style={{ display: linkActive ? "block" : "none" }}
+        >
+          Share Link
+        </a>
       </div>
     </>
   );
