@@ -6,7 +6,7 @@ const Movies = () => {
   console.log(movies);
   return (
     <>
-      <div className="flex gap-3 mt-10 flex-wrap justify-center">
+      <div className="flex gap-3 my-10 flex-wrap justify-center">
         {movies.length > 0
           ? movies.map((movie) => {
               return (
