@@ -10,6 +10,7 @@ const SearchBox = () => {
 
   const handleSearchMovie = () => {
     dispatch(getMovies(search));
+    setSearch("");
   };
 
   return (
@@ -22,7 +23,7 @@ const SearchBox = () => {
               onChange={(e) => setSearch(e.target.value)}
               value={search}
               placeholder="Enter film..."
-              className="input input-bordered w-60 max-w-xs focus:outline-none p-2 rounded-lg"
+              className="input input-bordered w-60 max-w-xs focus:outline-none p-2 rounded-lg text-xl"
             />
           </label>
         </div>

@@ -1,11 +1,15 @@
 import "./App.css";
 import MainPage from "./pages/MainPage";
-//import { Link } from "react-router-dom";
+import ListPage from "./pages/ListPage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-     <MainPage/>
+        <Routes>
+          <Route path="/" index element={<MainPage />} />
+          <Route path="/list" element={<ListPage />} />
+        </Routes>
     </>
   );
 }

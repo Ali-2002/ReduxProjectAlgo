@@ -2,31 +2,37 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TiDeleteOutline } from "react-icons/ti";
 import { removeFromList, setLinkActive } from "../store/actions/actions";
-const Favorites = () => {
+import { useNavigate } from "react-router-dom";
+
+const Favorites = ({ closeModal }) => {
   const dispatch = useDispatch();
   const { moviesList } = useSelector((state) => state.movies);
   const { linkActive } = useSelector((state) => state.linkActive);
   const [listName, setListName] = useState("");
-  const [linkList, setLinkList] = useState("#");
+  const navigate = useNavigate();
+
+  const showLink=()=>{
+    dispatch(setLinkActive(true));
+  }
 
   const saveList = () => {
-    dispatch(setLinkActive(true));
-    axios
-      .post("https://acb-api.algoritmika.org/api/movies/list", {
+    navigate("/list", {
+      state: {
+        list: moviesList,
         title: listName,
-        movies: moviesList.map((item) => item.imdbID),
-      })
-      .then((res) => {
-        setLinkList(res.data.id);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
+      },
+    });
   };
 
   return (
     <>
-      <div className="w-full flex flex-col justify-center items-center gap-3 bg-orange-500 rounded-lg p-6">
+      <div className="w-4/5 mx-auto mt-5 flex flex-col justify-center items-center gap-3 bg-[#0f1729] rounded-lg p-6">
+        <button
+          onClick={closeModal}
+          className="w-5 h-5 p-4 rounded-full bg-[#0abab5] flex items-center justify-center self-end text-lg text-white font-semibold"
+        >
+          X
+        </button>
         <h1 className="mb-5 text-6xl font-semibold text-white text-center">
           Favorite Films
         </h1>
@@ -62,24 +68,22 @@ const Favorites = () => {
         ) : null}
         <button
           type="button"
-          className="bg-teal-500 p-3 text-center text-white rounded-lg"
+          className="bg-teal-500 p-3 text-center text-white rounded-lg text-xl"
           style={{ display: linkActive ? "none" : "block" }}
-          onClick={saveList}
+          onClick={showLink}
           disabled={listName === "" || moviesList.length === 0}
         >
           {" "}
           Save List{" "}
         </button>
 
-        <a
-          href={`http://127.0.0.1:5173/list/${linkList}`}
-          target="_blank"
-          rel="noopener norefer"
-          className="bg-red-600 p-3 rounded-lg text-white"
+        <button
+          className="bg-red-600 p-3 rounded-lg text-white text-xl"
           style={{ display: linkActive ? "block" : "none" }}
+          onClick={saveList}
         >
           Share Link
-        </a>
+        </button>
       </div>
     </>
   );
