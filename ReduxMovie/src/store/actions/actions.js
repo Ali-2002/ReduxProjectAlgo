@@ -37,24 +37,6 @@ export const slideData = () => {
   };
 };
 
-export const getPostMovies = (imdbID) => {
-  return function (dispatch) {
-    let postMovie = [];
-    axios
-      .get(`http://www.omdbapi.com/?i=${imdbID}&apikey=${key}`)
-      .then((res) => res.data)
-      .then((data) => {
-        postMovie = [...postMovie, data];
-        dispatch(postMovies(postMovie));
-      });
-  };
-};
-
-export const postMovies = (payload) => ({
-  type: ActionTypes.POST_MOVIES,
-  payload,
-});
-
 export const searchMovies = (payload) => ({
   type: ActionTypes.SEARCH_MOVIE,
   payload,
